@@ -18,7 +18,7 @@
         },
       },
       color: {
-        value: "#ffffff",
+        value: "#fff",
       },
       shape: {
         type: "image",
@@ -44,7 +44,7 @@
       },
       links: {
         enable: true,
-        color: "#C5C",
+        color: "#ffffff",
       },
       move: {
         enable: true,
