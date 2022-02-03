@@ -11,7 +11,7 @@
   let particlesConfig = {
     particles: {
       number: {
-        value: 90,
+        value: 60,
         density: {
           enable: true,
           value_area: 800,
@@ -26,8 +26,8 @@
           image: [
             {
               src: "/r.svg",
-              width: 300,
-              height: 247,
+              width: 200,
+              height: 160,
             },
           ],
         },
