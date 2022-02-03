@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Link } from "svelte-navigator";
 
-  export const RABBIT_WIDTH = 239;
-  export const RABBIT_HEIGHT = 319;
+  export const RABBIT_WIDTH = Math.min(180, window.innerHeight * 0.25);
+  const RATIO = 1.3342618384;
+  export const RABBIT_HEIGHT = RABBIT_WIDTH * RATIO;
   const INTERVAL = 1000;
 
   import Particles from "../Particles.svelte";
@@ -24,7 +25,7 @@
         options: {
           image: [
             {
-              src: "http://localhost:8080/r.svg",
+              src: "/r.svg",
               width: 300,
               height: 247,
             },
