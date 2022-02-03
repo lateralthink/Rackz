@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Link } from "svelte-navigator";
 
-  export const RABBIT_WIDTH = Math.min(180, window.innerHeight * 0.25);
+  export const RABBIT_WIDTH = Math.min(180, window.innerHeight * 0.15);
   const RATIO = 1.3342618384;
   export const RABBIT_HEIGHT = RABBIT_WIDTH * RATIO;
   const INTERVAL = 1000;
@@ -27,7 +27,7 @@
             {
               src: "/r.svg",
               width: 200,
-              height: 160,
+              height: 140,
             },
           ],
         },
