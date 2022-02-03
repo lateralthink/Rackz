@@ -1,3 +1,7 @@
+<script>
+  alert(1);
+</script>
+
 <div
   class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal"
 >
