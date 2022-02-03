@@ -1,7 +1,3 @@
-<script>
-  alert(1);
-</script>
-
 <div
   class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal"
 >
@@ -34,7 +30,9 @@
                   </div> -->
         </div>
       </nav>
-
+      <script>
+        alert(2);
+      </script>
       <script
         src="https://defi.molekulon.club/build/buyablealbum.js"
         chain="4"
