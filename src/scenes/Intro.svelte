@@ -11,10 +11,10 @@
   let particlesConfig = {
     particles: {
       number: {
-        value: 50,
+        value: 90,
         density: {
           enable: true,
-          value_area: 500,
+          value_area: 800,
         },
       },
       color: {
