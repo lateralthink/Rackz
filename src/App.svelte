@@ -8,5 +8,5 @@
   <Route path="/">
     <Intro />
   </Route>
-  <Route path="index" component={Index} />
+  <Route path="gallery" component={Index} />
 </Router>
