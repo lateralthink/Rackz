@@ -1,3 +1,9 @@
+<script
+        src="https://defi.molekulon.club/build/buyablealbum.js"
+        chain="4"
+        contract="0xd089fc14ea90fe70585bd18422d8751f67ed7714"
+        visibility="Extended"
+        features="Buyable"></script>
 <div
   class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal"
 >
@@ -30,15 +36,7 @@
                   </div> -->
         </div>
       </nav>
-      <script>
-        alert(2);
-      </script>
-      <script
-        src="https://defi.molekulon.club/build/buyablealbum.js"
-        chain="4"
-        contract="0xd089fc14ea90fe70585bd18422d8751f67ed7714"
-        visibility="Extended"
-        features="Buyable"></script>
+
     </div>
   </section>
 
