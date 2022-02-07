@@ -88,7 +88,7 @@
     on:particlesInit={onParticlesInit}
   />
   <div class="rabbitLink" style="top: {posY}px;left: {posX}px">
-    <a class="rabbitLink" href="/gallery">
+    <a href="/gallery">
       <img
         src="/rabbit.svg"
         alt="Rabbit"
