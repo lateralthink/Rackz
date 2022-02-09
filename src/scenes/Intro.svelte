@@ -11,14 +11,14 @@
   let particlesConfig = {
     particles: {
       number: {
-        value: 60,
+        value: 10,
         density: {
           enable: true,
-          value_area: 800,
+          value_area: 50,
         },
       },
       color: {
-        value: "#fff",
+        value: "#000",
       },
       shape: {
         type: "image",
@@ -27,7 +27,7 @@
             {
               src: "/r.svg",
               width: 200,
-              height: 140,
+              height: 247,
             },
           ],
         },
@@ -44,7 +44,7 @@
       },
       links: {
         enable: true,
-        color: "#ffffff",
+        color: "#000000",
       },
       move: {
         enable: true,
@@ -100,7 +100,7 @@
 
 <style>
   .particles-wrapper {
-    background-color: #000000;
+    background-color: #ffffff;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -108,6 +108,7 @@
     overflow: hidden;
   }
   .rabbitLink {
+    transition: all 0.5s linear;
     position: fixed;
     top: 0px;
     left: 0px;
