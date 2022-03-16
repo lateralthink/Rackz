@@ -80,21 +80,48 @@
   }, INTERVAL);
 </script>
 
-<div class="particles-wrapper">
+<div class="particles-wrapper flex flex-col justify-center">
   <Particles
     id="tsparticles"
     options={particlesConfig}
     on:particlesLoaded={onParticlesLoaded}
     on:particlesInit={onParticlesInit}
   />
-  <div class="rabbitLink" style="top: {posY}px;left: {posX}px">
-    <a href="/gallery">
-      <img
-        src="/rabbit.svg"
-        alt="Rabbit"
-        style="width: {RABBIT_WIDTH}px;height: {RABBIT_HEIGHT}px"
-      />
-    </a>
+  <div class="menu-wrap bg-black py-6 px-10 z-50 flex flex-col items-center">
+    <ul class="flex flex-col md:flex-row grow justify-center items-center">
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#gallery"
+          >Virtual gallery</a
+        >
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html">About</a>
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#team"
+          >Team</a
+        >
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html">Media</a>
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html"
+          >Roadmap</a
+        >
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html"
+          >Private club</a
+        >
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html"
+          >Contact</a
+        >
+      </li>
+    </ul>
+    <img src="/gallery-logo.svg" class="logo mt-20 mb-11" alt="Rackz Gallery" />
   </div>
 </div>
 
@@ -107,10 +134,8 @@
     margin: 0;
     overflow: hidden;
   }
-  .rabbitLink {
-    transition: all 0.5s linear;
-    position: fixed;
-    top: 0px;
-    left: 0px;
+
+  .logo {
+    width: 200px;
   }
 </style>

@@ -1,3 +1,7 @@
+<script>
+  import LibLoader from "../components/LibLoader.svelte";
+</script>
+
 <div
   class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal"
 >
@@ -30,12 +34,13 @@
                   </div> -->
         </div>
       </nav>
-      <script
-        src="https://defi.molekulon.club/build/buyablealbum.js"
+      <LibLoader
+        url="https://defi.molekulon.club/build/buyablealbum.js"
         chain="4"
         contract="0xd089fc14ea90fe70585bd18422d8751f67ed7714"
         visibility="Extended"
-        features="Buyable"></script>
+        features="Buyable"
+      />
     </div>
   </section>
 
