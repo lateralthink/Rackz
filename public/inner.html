@@ -1,10 +1,11 @@
 <!doctype html>
-<html>
+<html data-theme="wireframe">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.11.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style type="text/tailwindcss">
@@ -131,6 +132,35 @@
       document.getElementById('gallery-wrap').classList.add('expanded');
       document.getElementById('gallery-footer').style.display = 'none';
     }
+
+    const targetDate = new Date("2022-03-30T11:00:00Z").getTime();
+
+    const interval = setInterval(function () {
+
+      var distance = targetDate - new Date().getTime();
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      var daysE = document.querySelector('#days');
+      daysE.setAttribute("style", "--value: " + Math.max(0, days) + ";");
+
+      var hoursE = document.querySelector('#hours');
+      hoursE.setAttribute("style", "--value: " + Math.max(0, hours) + ";");
+
+      var minutesE = document.querySelector('#minutes');
+      minutesE.setAttribute("style", "--value: " + Math.max(0, minutes) + ";");
+
+      var secondsE = document.querySelector('#seconds');
+      secondsE.setAttribute("style", "--value: " + Math.max(0, seconds) + ";");
+
+      if (distance < 0) {
+        clearInterval(interval);
+      }
+
+    }, 1000);
   </script>
 </head>
 
@@ -146,16 +176,16 @@
       <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#team">Team</a>
     </li>
     <li>
-      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#">Media</a>
+      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#media">Media</a>
     </li>
     <li>
-      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#">Roadmap</a>
+      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#shop">Shop</a>
     </li>
     <li>
-      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#">Private club</a>
+      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#club">Private club</a>
     </li>
     <li>
-      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#">Contact</a>
+      <a class="text-xs text-gray-700 hover:text-black uppercase m-6" href="#contact">Contact</a>
     </li>
   </ul>
 
@@ -163,7 +193,7 @@
 
   <section id="gallery" class="py-4">
 
-    <div class="container mx-auto">
+    <div class="container mx-auto px-6">
       <div class="flex flex-row justify-between items-end mt-10">
         <div class="flex flex-1">
           <img src="/gallery-square.svg" alt="Gallery square" width="71" />
@@ -263,10 +293,39 @@
 
   </section>
 
+  <section id="about" class="py-4">
+
+    <div class="container mx-auto pb-20 px-6">
+      <div class="flex flex-row justify-between items-end mt-10">
+        <div class="flex flex-1">
+          <img src="/gallery-square.svg" alt="Gallery square" width="71" />
+        </div>
+        <div></div>
+        <div class="flex flex-1"></div>
+      </div>
+      <h2>About</h2>
+
+
+      <div class="mt-40 w-full md:w-4/6 mx-auto aspect-[16/7] bg-black flex flex-col items-center justify-around">
+
+        <div>
+          <h3 class="text-9xl text-white uppercase text-center">404</h3>
+          <h4 class="text-xl text-white uppercase text-center">Not found</h4>
+        </div>
+        <p class="text-white text-center">The explanation you are looking for does not exist. Join us and draw your own
+          conclusions.</p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
 
   <section id="team" class="py-4">
 
-    <div class="container mx-auto">
+    <div class="container mx-auto px-6">
       <div class="flex flex-row justify-between items-end mt-10">
         <div class="flex flex-1">
           <img src="/gallery-square.svg" alt="Gallery square" width="71" />
@@ -366,6 +425,113 @@
 
 
 
+    </div>
+
+  </section>
+
+  <section id="media" class="py-4">
+
+    <div class="container mx-auto pb-20 px-6">
+      <div class="flex flex-row justify-between items-end mt-10">
+        <div class="flex flex-1">
+          <img src="/gallery-square.svg" alt="Gallery square" width="71" />
+        </div>
+        <div></div>
+        <div class="flex flex-1"></div>
+      </div>
+      <h2>Media</h2>
+      <h3 class="text-center mt-6">Rackz Gallery first visual project,</h3>
+      <h4 class="text-center uppercase text-2xl mt-2 mb-6">Pandora</h4>
+
+      <div class="pt-10 w-4/6 mx-auto aspect-video">
+
+        <iframe src="https://player.vimeo.com/video/16161685?h=517bdaefd5" style="width: 100%; height: 100%;"
+          frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
+
+      <p class="pt-20 w-4/6 mx-auto text-center">Filmed by Blai Costa, directed by Alejandro Martínez & edited by both.
+        Photography by Gerard Riera. Original music from HUECO Prods.</p>
+
+      <p class="pt-4 w-5/6 mx-auto text-center">Starring; Stevie Culhane, Andrew Verde, Daniel Jenks, Pol Catena,
+        Pinyata &
+        Alejandro
+        Martínez.</p>
+
+
+    </div>
+
+  </section>
+
+  <section id="shop" class="py-4">
+
+    <div class="container mx-auto pb-20 px-6">
+      <div class="flex flex-row justify-between items-end mt-10">
+        <div class="flex flex-1">
+          <img src="/gallery-square.svg" alt="Gallery square" width="71" />
+        </div>
+        <div></div>
+        <div class="flex flex-1"></div>
+      </div>
+      <h2>Shop</h2>
+      <p>To commemorate the release of Rackz Gallery's first video to the world, some of the designs that the team has
+        used
+        exclusively over the past two years are available online.</p>
+
+      <div class="container mx-auto flex items-center flex-wrap mt-20 pb-12 mb-6 shop-wrap">
+        --SHOP SCRIPT--
+      </div>
+
+
+    </div>
+
+  </section>
+
+  <section id="club" class="py-4">
+
+    <div class="container mx-auto">
+      <div class="flex flex-row justify-between items-end mt-10">
+        <div class="flex flex-1">
+          <img src="/gallery-square.svg" alt="Gallery square" width="71" />
+        </div>
+        <div></div>
+        <div class="flex flex-1"></div>
+      </div>
+      <h2>Private club</h2>
+
+
+    </div>
+
+    <div class="mt-40 mb-40 w-full mx-auto bg-black flex flex-col items-center justify-center py-20">
+
+      <h3 class="text-3xl mb-10 text-white uppercase text-center">SUCCESS TASTES BETTER SHARED</h3>
+
+      <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+          <span class="countdown font-mono text-5xl">
+            <span id="days" style="--value:0;"></span>
+          </span>
+          days
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+          <span class="countdown font-mono text-5xl">
+            <span id="hours" style="--value:0;"></span>
+          </span>
+          hours
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+          <span class="countdown font-mono text-5xl">
+            <span id="minutes" style="--value:0;"></span>
+          </span>
+          min
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+          <span class="countdown font-mono text-5xl">
+            <span id="seconds" style="--value:0;"></span>
+          </span>
+          sec
+        </div>
+      </div>
     </div>
 
   </section>

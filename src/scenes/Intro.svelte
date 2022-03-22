@@ -95,7 +95,9 @@
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html">About</a>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#about"
+          >About</a
+        >
       </li>
       <li>
         <a class="text-xl text-white uppercase m-8" href="/inner.html#team"
@@ -103,20 +105,22 @@
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html">Media</a>
-      </li>
-      <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html"
-          >Roadmap</a
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#media"
+          >Media</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html"
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#shop"
+          >Shop</a
+        >
+      </li>
+      <li>
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#club"
           >Private club</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html"
+        <a class="text-xl text-white uppercase m-8" href="/inner.html#contact"
           >Contact</a
         >
       </li>
