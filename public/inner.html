@@ -480,6 +480,7 @@
 
       <div class="container mx-auto flex items-center flex-wrap mt-20 pb-12 mb-6 shop-wrap">
 <div id='collection-component-1649258185895'></div>
+<div id='collection-component-1649260724046'></div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -508,17 +509,17 @@
     ShopifyBuy.UI.onReady(client).then(function (ui) {
       ui.createComponent('collection', {
         id: '398709260519',
-        node: document.getElementById('collection-component-1649258185895'),
+        node: document.getElementById('collection-component-1649260724046'),
         moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
         options: {
   "product": {
     "styles": {
       "product": {
         "@media (min-width: 601px)": {
-          "max-width": "calc(33.33333% - 30px)",
-          "margin-left": "30px",
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
           "margin-bottom": "50px",
-          "width": "calc(33.33333% - 30px)"
+          "width": "calc(25% - 20px)"
         },
         "img": {
           "height": "calc(100% - 15px)",
@@ -535,7 +536,8 @@
       },
       "title": {
         "font-family": "Karla, sans-serif",
-        "font-weight": "normal"
+        "font-weight": "normal",
+        "font-size": "17px"
       },
       "button": {
         "font-family": "Karla, sans-serif",
@@ -561,8 +563,13 @@
         "font-weight": "bold"
       }
     },
+    "buttonDestination": "checkout",
+    "contents": {
+      "button": false,
+      "buttonWithQuantity": true
+    },
     "text": {
-      "button": "Add to cart"
+      "button": "Buy now"
     },
     "googleFonts": [
       "Karla"
@@ -572,7 +579,7 @@
     "styles": {
       "products": {
         "@media (min-width: 601px)": {
-          "margin-left": "-30px"
+          "margin-left": "-20px"
         }
       }
     }
