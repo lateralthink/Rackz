@@ -100,29 +100,29 @@
     }
 
     @layer utilities {
-      .mlkln-album {
+      .lt-album {
         @apply flex flex-wrap;
       }
 
-      .mlkln-album-card {
+      .lt-album-card {
         @apply w-full md:w-1/3 xl:w-1/4 p-6;
       }
 
-      .mlkln-album-card > figure > img {
+      .lt-album-card > figure > img {
         transition: all 0.3s;
         transform: scale(1);
         aspect-ratio: 1;
         object-fit: contain;
       }
-      .mlkln-album-card > figure > img:hover {
+      .lt-album-card > figure > img:hover {
         @apply shadow-lg shadow-gray-400;
         transform: scale(1.02);
       }
-      .mlkln-album-card-content {
+      .lt-album-card-content {
         @apply mt-3;
       }
 
-      .mlkln3-buy-button button {
+      .lt-buy-button button {
         @apply mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
       }
     }
