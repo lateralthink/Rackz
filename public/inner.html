@@ -465,7 +465,8 @@
       <p class="pt-4">For more information contact <a href="mailto:Rackzarmy@rackzgallery.com">Rackzarmy@rackzgallery.com</a></p>
 
       <div class="container mx-auto flex items-center flex-wrap mt-20 pb-12 mb-6 shop-wrap">
-        <div id='collection-component-1652349314294'></div>
+       <div id='product-component-1652350027976'></div>
+        <div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -492,37 +493,25 @@
       storefrontAccessToken: '155fbb76ae49b7bc397ab1de86bf043e',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
-      ui.createComponent('collection', {
-        id: '398709260519',
-        node: document.getElementById('collection-component-1652349314294'),
+      ui.createComponent('product', {
+        id: '7740026847463',
+        node: document.getElementById('product-component-1652350027976'),
         moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
         options: {
   "product": {
     "styles": {
       "product": {
         "@media (min-width: 601px)": {
-          "max-width": "calc(50% - 40px)",
-          "margin-left": "40px",
-          "margin-bottom": "50px",
-          "width": "calc(50% - 40px)"
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
         },
-        "img": {
-          "height": "calc(100% - 15px)",
-          "position": "absolute",
-          "left": "0",
-          "right": "0",
-          "top": "0"
-        },
-        "imgWrapper": {
-          "padding-top": "calc(75% + 15px)",
-          "position": "relative",
-          "height": "0"
-        }
+        "text-align": "left"
       },
       "title": {
         "font-family": "Quantico, sans-serif",
         "font-weight": "normal",
-        "font-size": "15px",
+        "font-size": "26px",
         "color": "#000000"
       },
       "button": {
@@ -537,9 +526,7 @@
         ":focus": {
           "background-color": "#000000"
         },
-        "border-radius": "0px",
-        "padding-left": "10px",
-        "padding-right": "10px"
+        "border-radius": "0px"
       },
       "quantityInput": {
         "font-size": "13px",
@@ -547,21 +534,27 @@
         "padding-bottom": "14.5px"
       },
       "price": {
-        "font-family": "Quantico, sans-serif"
+        "font-family": "Quantico, sans-serif",
+        "font-size": "18px"
       },
       "compareAt": {
-        "font-family": "Quantico, sans-serif"
+        "font-family": "Quantico, sans-serif",
+        "font-size": "15.299999999999999px"
       },
       "unitPrice": {
-        "font-family": "Quantico, sans-serif"
+        "font-family": "Quantico, sans-serif",
+        "font-size": "15.299999999999999px"
       }
     },
-    "buttonDestination": "modal",
+    "layout": "horizontal",
     "contents": {
-      "options": false
+      "img": false,
+      "imgWithCarousel": true,
+      "description": true
     },
+    "width": "100%",
     "text": {
-      "button": "View product"
+      "button": "Add to cart"
     },
     "googleFonts": [
       "Quantico"
@@ -571,7 +564,7 @@
     "styles": {
       "products": {
         "@media (min-width: 601px)": {
-          "margin-left": "-40px"
+          "margin-left": "-20px"
         }
       }
     }
@@ -603,9 +596,7 @@
         ":focus": {
           "background-color": "#000000"
         },
-        "border-radius": "0px",
-        "padding-left": "10px",
-        "padding-right": "10px"
+        "border-radius": "0px"
       },
       "quantityInput": {
         "font-size": "13px",
@@ -650,14 +641,14 @@
   "option": {
     "styles": {
       "label": {
-        "font-family": "Quantico, sans-serif"
+        "font-family": "Karla, sans-serif"
       },
       "select": {
-        "font-family": "Quantico, sans-serif"
+        "font-family": "Karla, sans-serif"
       }
     },
     "googleFonts": [
-      "Quantico"
+      "Karla"
     ]
   },
   "cart": {
