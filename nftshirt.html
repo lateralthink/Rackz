@@ -18,41 +18,7 @@
         > figure > img:hover { @apply shadow-lg shadow-gray-400; transform: scale(1.02); } .lt-album-card-content { @apply mt-3; } .lt-buy-button button { @apply mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400
         rounded shadow; } }
     </style>
-    <script>
-        function expandGallery() {
-            document.getElementById('gallery-wrap').classList.add('expanded');
-            document.getElementById('gallery-footer').style.display = 'none';
-        }
 
-        const targetDate = new Date("2022-06-19T10:00:00Z").getTime();
-
-        const interval = setInterval(function() {
-
-            var distance = targetDate - new Date().getTime();
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            var daysE = document.querySelector('#days');
-            daysE.setAttribute("style", "--value: " + Math.max(0, days) + ";");
-
-            var hoursE = document.querySelector('#hours');
-            hoursE.setAttribute("style", "--value: " + Math.max(0, hours) + ";");
-
-            var minutesE = document.querySelector('#minutes');
-            minutesE.setAttribute("style", "--value: " + Math.max(0, minutes) + ";");
-
-            var secondsE = document.querySelector('#seconds');
-            secondsE.setAttribute("style", "--value: " + Math.max(0, seconds) + ";");
-
-            if (distance < 0) {
-                clearInterval(interval);
-            }
-
-        }, 1000);
-    </script>
 </head>
 
 <body>
