@@ -98,16 +98,6 @@
       background: rgb(255,255,255);
       background: linear-gradient(0deg, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%);
     }
-    
-    .lt-album-card > figure.selected {
-      display: flex;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-    }
 
     @layer utilities {
       .lt-album {
@@ -135,6 +125,17 @@
       .lt-buy-button button {
         @apply mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
       }
+    }
+  </style>
+  <style>
+    .lt-album-card > figure.selected {
+      display: flex;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
     }
   </style>
   <script>
