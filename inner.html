@@ -126,8 +126,7 @@
         @apply mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
       }
     }
-  </style>
-  <style>
+    
     .lt-album-card > figure.selected {
       display: flex;
       position: fixed;
@@ -173,6 +172,17 @@
 
     }, 1000);
   </script>
+  <style>
+    .lt-album-card > figure.selected {
+      display: flex;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
