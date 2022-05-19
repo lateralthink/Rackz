@@ -18,6 +18,17 @@
         > figure > img:hover { @apply shadow-lg shadow-gray-400; transform: scale(1.02); } .lt-album-card-content { @apply mt-3; } .lt-buy-button button { @apply mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400
         rounded shadow; } }
     </style>
+    <style>
+        .lt-album-card > figure.selected {
+          display: flex;
+          position: fixed;
+          z-index: 9999;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+        }
+    </style>
     <script>
         function expandGallery() {
             document.getElementById('gallery-wrap').classList.add('expanded');
