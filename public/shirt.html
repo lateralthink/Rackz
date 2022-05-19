@@ -5,11 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form NTF Shirt Rackz</title>
+    <title>Claim your T-Shirt</title>
 </head>
 
 <body>
+    <p class="text-center"> Hey buddy! You are already part of our present and future, leave us your details in the form below so we can make your exclusive t-shirt for you.</p>
     <form name="nftshirt" method="POST" data-netlify="true">
+        <p>
+            <label>Your Size: <select name="role[]" multiple>
+              <option value="Small">S</option>
+              <option value="Medium">M</option>
+              <option value="Medium">L</option>
+              <option value="Medium">XL</option>
+              <option value="Medium">XXL</option>
+
+
+            
+            </select></label>
+        </p>
         <p>
             <label>Your Name: <input type="text" name="name" /></label>
         </p>
@@ -18,7 +31,7 @@
         </p>
 
         <p>
-            <label>Size: <textarea name="message"></textarea></label>
+            <label>Shipping Address: <textarea name="message"></textarea></label>
         </p>
         <p>
             <button type="submit">Send</button>
