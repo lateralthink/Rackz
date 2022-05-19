@@ -12,15 +12,12 @@
     <p class="text-center"> Hey buddy! You are already part of our present and future, leave us your details in the form below so we can make your exclusive t-shirt for you.</p>
     <form name="nftshirt" method="POST" data-netlify="true">
         <p>
-            <label>Your Size: <select name="role[]" multiple>
+            <label>Your Size: <select name="size[]" multiple>
               <option value="Small">S</option>
               <option value="Medium">M</option>
-              <option value="Medium">L</option>
-              <option value="Medium">XL</option>
-              <option value="Medium">XXL</option>
-
-
-            
+              <option value="Large">L</option>
+              <option value="Xlarge">XL</option>
+              <option value="XXlarge">XXL</option>
             </select></label>
         </p>
         <p>
@@ -31,7 +28,7 @@
         </p>
 
         <p>
-            <label>Shipping Address: <textarea name="message"></textarea></label>
+            <label>Shipping Address: <textarea name="address"></textarea></label>
         </p>
         <p>
             <button type="submit">Send</button>
