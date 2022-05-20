@@ -24,14 +24,15 @@
             width: 100%;
             height: 300px;
         }
+
+        .mlkln3-not-access-title, .mlkln3-not-access-subtitle {
+          display: none;
+        }
     </style>
 
 </head>
 
 <body>
-
-
-
 
     <section id="gallery" class="py-4">
 
@@ -43,11 +44,17 @@
         </div>
         </div>
 
+    </section>
 
-
-
-
-
+    <script>
+      window.addEventListener('load', (event) => {
+        const noContent = document.getElementsByClassName('mlkln3-no-access');
+        const passports = document.getElementsByClassName('mlkln3-no-access-passports');
+        const p = document.createElement('p');
+        p.innerHTML = "Hello again! Unfortunately your Metamask account does not contain any of the membership NFT's that entitle you to claim the exclusive T-shirt.";
+        noContent.insertBefore(p, passports);
+      });
+    </script>
 </body>
 
 </html>
