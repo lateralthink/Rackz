@@ -30,23 +30,27 @@
             width: 100%;
             height: 100%;
         }
-        
+
         .lt-album-card>figure.selected>img {
             width: 100%;
             background-color: white;
         }
-        
+
         .lt-album-card img {
             cursor: pointer;
         }
-        
+
         .lt-album-card-price-and-amount {
             display: flex;
             justify-content: space-between;
         }
-        
+
         .lt-album-card-price::after {
             content: ' Matics';
+        }
+
+        .hidden {
+          visibility: hidden;
         }
     </style>
     <script>
@@ -83,6 +87,16 @@
             }
 
         }, 1000);
+
+        window.addEventListener('load', (event) => {
+            const tshirtClicker = document.getElementById('t-shirt-clicker');
+            tshirtClicker.addEventListener('click', () => {
+              const tshirtContent = document.getElementById('t-shirt-clicker-content');
+              tshirtContent.classList.toggle('hidden')
+            });
+
+          console.log('page is fully loaded');
+        });
     </script>
 </head>
 
@@ -631,11 +645,11 @@
                     <div class="container mx-auto  flex flex-col justify-center items-center">
                         <img class="h-auto w-1/2 mt-8 border-black border-2" src="/nft shirts.png" alt="nft shirts">
                 <div class="container mx-auto flex flex-col justify-center items-center mt-6">
-                    <button class="clicker flex flex-row">
-                        <div class="text-white px-5 py-3 bg-black border-black border-2">+</div>                          
+                    <button id="t-shirt-clicker" class="flex flex-row">
+                        <div class="text-white px-5 py-3 bg-black border-black border-2">+</div>
                         <div class="text-black px-5 py-3 border-black border-2">+</div>
                     </button>
-                    <div class="clicker-content mt-4">
+                    <div id="t-shirt-clicker-content" class="mt-4">
                         <p class="p-6 pt-0 text-black text-xl">By acquiring a limited NFT Rackz Gallery membership you will be entitled to the following:
                             <br><br>I. Receipt of a Non Fungible Token that will certify that you are officially part of our pri- vate community.
                             <br><br>II. There are two types of NFT, the option with white background and the option with black background. The chosen option indicates the color of the t-shirt you will be able to claim.
@@ -643,13 +657,13 @@
                                 <br><br>IV. There is a total of 500 membership NFT's, 250 per color.
                                 <br><br>V. The process will take place on the Polygon network and you must have a Metamask account. Payment will be in MATIC. If you have any doubts you can check how to complete the process at the bottom of our Virtual Gallery or contact
                                 support@rackzgallery.com
-                                <br><br>                    
+                                <br><br>
                             </p>
                             <div class="flex flex-row justify-center items-center text-black">
                                 <script src="https://defi.molekulon.club/build/albums.js" ver="4" chain="4" contract="0x1d85529b1e5962e512df3a62dca16eeac97f6618" features="BuyButton, PriceAndAmount"></script>
                             </div>
                             <div class="text-center"><a class="border-black border-2 px-1 py-3" href="/claim.html"><button class="text-black text-xl p-6 ">CLAIM MY MEMBERSHIP T-SHIRT</button></a></div>
-                        </div>         
+                        </div>
                     </div>
                 </div>
             </div>
@@ -705,8 +719,6 @@
         </div>
 
     </section>
-
-
 
 </body>
 
