@@ -14,11 +14,40 @@
     const check = e => {
       const hidden = document.querySelectorAll('[type=hidden][id]:not([id=""])');
       for (const field of hidden) {
-        console.log(field)
-        console.log(field.value)
+        const id = field.getAttribute('id');
+        let noWallet = false;
+        let noCard = false;
+        if (!field.value) {
+          if (id === 'wallet') {
+            noWallet = true;
+          } else if (['tokenId', 'tmpl'].includes(id)) {
+            noCard = false;
+          }
+        }
       }
-      e.preventDefault();
-      return false;
+
+      if (noWallet || noCard) {
+        e.preventDefault();
+      }
+
+      if (noCard) {
+        const tshirts = document.getElementById('t-shirts');
+        tshirts.classList.add('error');
+      }
+
+      if (noWallet) {
+        const alert = document.createElement('div');
+        const content = document.createElement('div');
+        const msg = document.createElement('span');
+        msg.innerHTML = "We can't read your wallet address";
+        content.appendChild(msg);
+        alert.classList.add('alert', 'alert-error',  'shadow-lg');
+        alert.appendChild(content);
+
+        const container = document.getElementById('container');
+        const form = document.querySelector('form');
+        container.insertBefore(alert, form);
+      }
     }
 
     window.addEventListener('load', async (event) => {
@@ -186,9 +215,9 @@
 
 <body>
 
-  <section id="gallery" class="py-4">
+  <section class="py-4">
 
-    <div class="container flex justify-center">
+    <div id="container" class="container flex justify-center">
 
       <form name="nftshirtGarito" method="POST" action="/shirt-claimed.html" data-netlify="true" class="w-full max-w-sm" onsubmit="return check(event)">
 
@@ -198,7 +227,7 @@
               Select the t-shirt:
             </label>
           </div>
-          <div id="t-shirts-list" class="flex flex-wrap gap-4 md:w-2/3">
+          <div id="t-shirts-list" class="flex gap-4 md:w-2/3">
           </div>
         </div>
 
