@@ -2716,6 +2716,10 @@ a {
   opacity: 0.25;
 }
 
+.t-shirt:not(.used) {
+  cursor: pointer;
+}
+
 .visible {
   visibility: visible;
 }

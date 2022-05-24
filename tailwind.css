@@ -143,6 +143,10 @@
   .used {
     @apply opacity-25;
   }
+
+  .t-shirt:not(.used) {
+    @apply cursor-pointer;
+  }
 }
 
 .flip {
