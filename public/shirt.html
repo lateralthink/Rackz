@@ -13,19 +13,17 @@
   <script>
     const check = e => {
       const hidden = document.querySelectorAll('[type=hidden][id]:not([id=""])');
-      let noWallet = false;
-      let noCard = false;
-      console.log(hidden)
+      var noWallet = false;
+      var noCard = false;
       for (const field of hidden) {
         const id = field.getAttribute('id');
-        console.log(id)
-        console.log(field.value)
-        console.log(!field.value)
         if (!field.value) {
           if (id === 'wallet') {
             noWallet = true;
+            console.log(noWallet)
           } else if (['tokenId', 'tmpl'].includes(id)) {
             noCard = false;
+            console.log(console)
           }
         }
       }
