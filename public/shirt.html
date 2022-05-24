@@ -27,7 +27,7 @@
       const resp = await fetch(`${base_url}sites/${site_id}/submissions`, opts);
       if (resp.ok) {
         const rjson = await resp.json();
-        const submissions = rjson.filter(s => s.form_name === 'nftshirt3' && s.data.wallet === accounts[0])
+        const submissions = rjson.filter(s => s.form_name === 'nftshirtGarito' && s.data.wallet === accounts[0])
         console.log(submissions)
         const web3 = new Web3('https://rinkeby.infura.io/v3/fd54bdcad15640efbcb501979a6075f6');
         const abi = [
