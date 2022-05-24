@@ -28,7 +28,7 @@
 
       if (noCard) {
         const tshirts = document.getElementById('t-shirts');
-        tshirts.classList.add('border border-red-500');
+        tshirts.classList.add('border', 'border-red-500');
       }
 
       if (noWallet) {
@@ -46,7 +46,6 @@
       }
 
       if (noWallet || noCard) {
-        console.log('canceling')
         e.preventDefault();
         return false;
       }
