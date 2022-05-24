@@ -188,7 +188,7 @@
               Select the t-shirt:
             </label>
           </div>
-          <div id="t-shirts-list" class="flex gap-4 md:w-2/3">
+          <div id="t-shirts-list" class="flex flex-wrap gap-4 md:w-2/3">
           </div>
         </div>
 
@@ -199,7 +199,7 @@
             </label>
           </div>
           <div class="md:w-2/3">
-            <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="size" name="size">
+            <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="size" name="size" required>
               <option value="sm">Small</option>
               <option value="md">Medium</option>
               <option value="lg">Large</option>
@@ -215,7 +215,7 @@
             </label>
           </div>
           <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="email" name="email" type="email">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="email" name="email" type="email" required>
           </div>
         </div>
 
@@ -226,13 +226,13 @@
             </label>
           </div>
           <div class="md:w-2/3">
-            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="address" name="address"></textarea>
+            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="address" name="address" required></textarea>
           </div>
         </div>
 
-        <input id="wallet" type="hidden" name="wallet" />
-        <input id="tokenId" type="hidden" name="tokenId" />
-        <input id="tmpl" type="hidden" name="tmpl" />
+        <input id="wallet" type="hidden" name="wallet" required />
+        <input id="tokenId" type="hidden" name="tokenId" required />
+        <input id="tmpl" type="hidden" name="tmpl" required />
         <input name="bot-field" type="hidden" />
 
         <div class="md:flex md:items-center">
