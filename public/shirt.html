@@ -26,13 +26,12 @@
         }
       }
 
-      if (noWallet || noCard) {
-        e.preventDefault();
-      }
-
       if (noCard) {
         const tshirts = document.getElementById('t-shirts');
-        tshirts.classList.add('error');
+        const p = document.createElement('p')
+        p.classList.add('text-red-500');
+        p.innerHTML = 'Select one';
+        tshirts.appendChild(p)
       }
 
       if (noWallet) {
@@ -48,6 +47,12 @@
         const form = document.querySelector('form');
         container.insertBefore(alert, form);
       }
+
+      if (noWallet || noCard) {
+        e.preventDefault();
+        return false;
+      }
+      return true;
     }
 
     window.addEventListener('load', async (event) => {
