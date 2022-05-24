@@ -157,7 +157,7 @@
           const label = document.querySelector('#t-shirts label');
           label.innerHTML = 'Your t-shirt:';
         } else if (Object.keys(owned).length > 1) {
-          for (const tshirt of document.querySelector('t-shirt:not(.used)')) {
+          for (const tshirt of document.querySelectorAll('t-shirt:not(.used)')) {
             tshirt.addEventListener('click', e => {
               const selected = document.querySelector('.t-shirt.selected');
               if (selected) {

@@ -139,6 +139,10 @@
   .clicker:focus+.clicker-content {
     @apply block;
   }
+
+  .used {
+    @apply opacity-25;
+  }
 }
 
 .flip {
