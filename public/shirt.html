@@ -28,10 +28,7 @@
 
       if (noCard) {
         const tshirts = document.getElementById('t-shirts');
-        const p = document.createElement('p')
-        p.classList.add('text-red-500');
-        p.innerHTML = 'Select one';
-        tshirts.parentNode.insertBefore(p, tshirts);
+        tshirts.classList.add('border border-red-500');
       }
 
       if (noWallet) {
@@ -53,8 +50,7 @@
         return false;
       }
 
-      e.preventDefault();
-      return false;
+      return true;
     }
 
     window.addEventListener('load', async (event) => {
