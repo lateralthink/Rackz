@@ -12,8 +12,11 @@
 
   <script>
     const check = e => {
-      const hidden = document.querySelectorAll('[type=hidden]');
-      console.log(hidden)
+      const hidden = document.querySelectorAll('[type=hidden][id]:not([id=""])');
+      for (const field of hidden) {
+        console.log(field)
+        console.log(field.value)
+      }
       e.preventDefault();
       return false;
     }
