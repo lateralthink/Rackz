@@ -136,8 +136,9 @@
           div.setAttribute('id', `t-shirt-${ tshirt.minted.itemId }`);
           div.classList.add('w-3/12', 't-shirt');
           const submission = submissions.find(s => s.data.tokenId === tshirt.minted.itemId)
-          console.log(submission)
-          // if(submission)
+          if(submission) {
+            div.classList.add('used');
+          }
           const img = document.createElement('img');
           img.src = tmpls[tshirt.minted.tmpl].image.replace('ipfs://', ipfsURL);
           img.setAttribute('tokenId', tshirt.minted.itemId)
@@ -154,10 +155,9 @@
           const tshirts = document.getElementsByClassName('t-shirt');
           tshirts[0].classList.add('selected')
           const label = document.querySelector('#t-shirts label');
-          console.log(label)
           label.innerHTML = 'Your t-shirt:';
         } else if (Object.keys(owned).length > 1) {
-          for (const tshirt of document.getElementsByClassName('t-shirt')) {
+          for (const tshirt of document.querySelector('t-shirt:not(.used)')) {
             tshirt.addEventListener('click', e => {
               const selected = document.querySelector('.t-shirt.selected');
               if (selected) {
