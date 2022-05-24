@@ -28,7 +28,6 @@
       if (resp.ok) {
         const rjson = await resp.json();
         const submissions = rjson.filter(s => s.form_name === 'nftshirtGarito' && s.data.wallet === accounts[0])
-        console.log(submissions)
         const web3 = new Web3('https://rinkeby.infura.io/v3/fd54bdcad15640efbcb501979a6075f6');
         const abi = [
           {
@@ -136,6 +135,9 @@
           const div = document.createElement('div');
           div.setAttribute('id', `t-shirt-${ tshirt.minted.itemId }`);
           div.classList.add('w-3/12', 't-shirt');
+          const submission = submissions.find(s => s.data.tokenId === tshirt.minted.itemId)
+          console.log(submission)
+          // if(submission)
           const img = document.createElement('img');
           img.src = tmpls[tshirt.minted.tmpl].image.replace('ipfs://', ipfsURL);
           img.setAttribute('tokenId', tshirt.minted.itemId)
