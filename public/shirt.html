@@ -13,10 +13,10 @@
   <script>
     const check = e => {
       const hidden = document.querySelectorAll('[type=hidden][id]:not([id=""])');
+      let noWallet = false;
+      let noCard = false;
       for (const field of hidden) {
         const id = field.getAttribute('id');
-        let noWallet = false;
-        let noCard = false;
         if (!field.value) {
           if (id === 'wallet') {
             noWallet = true;
