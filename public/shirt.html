@@ -20,23 +20,18 @@
         if (!field.value) {
           if (id === 'wallet') {
             noWallet = true;
-            console.log(noWallet)
           } else if (['tokenId', 'tmpl'].includes(id)) {
             noCard = true;
-            console.log(noCard)
           }
         }
       }
-
-      console.log(noCard);
-      console.log(noWallet);
 
       if (noCard) {
         const tshirts = document.getElementById('t-shirts');
         const p = document.createElement('p')
         p.classList.add('text-red-500');
         p.innerHTML = 'Select one';
-        tshirts.appendChild(p)
+        tshirts.parentNode.insertBefore(p, tshirts);
       }
 
       if (noWallet) {
