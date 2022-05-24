@@ -25,7 +25,7 @@
         options: {
           image: [
             {
-              src: "/r.svg",
+              src: "/assets/r.svg",
               width: 200,
               height: 247,
             },
@@ -125,11 +125,11 @@
         >
       </li>
     </ul>
-    <img src="/gallery-logo.svg" class="logo mt-20 mb-11" alt="Rackz Gallery" />
+    <img src="/assets/gallery-logo.svg" class="logo mt-20 mb-11" alt="Rackz Gallery" />
   </div>
 </div>
 
-<style>
+<!-- <style>
   .particles-wrapper {
     background-color: #ffffff;
     width: 100%;
@@ -142,4 +142,4 @@
   .logo {
     width: 200px;
   }
-</style>
+</style> -->
