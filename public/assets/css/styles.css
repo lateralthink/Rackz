@@ -2625,6 +2625,11 @@ h2:after {
   flex: 1;
 }
 
+.lt-album {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .lt-album-card > figure.selected {
   position: fixed;
   top: 0px;
