@@ -59,17 +59,17 @@
       field.value = accounts[0];
 
       const base_url = "https://api.netlify.com/api/v1/";
-      const site_id = "60e53e35-7527-44d5-a3a0-eb590a20d2a3";
+      const site_id = "a73df56c-4bef-42ef-a22a-ba994a6d5dc8";
       const opts = {
         headers: {
           'User-Agent': 'rackzgallery',
-          Authorization: 'Bearer 03LvbzlBqVmPy8udlj8i1hvj_tkUxPIPFdgis1KSjDs'
+          Authorization: 'Bearer Y8m0b0Yj_wyb8VNkHyvrZ4QE9ur2uSkp-GavsknJ94U'
         }
       }
       const resp = await fetch(`${base_url}sites/${site_id}/submissions`, opts);
       if (resp.ok) {
         const rjson = await resp.json();
-        const submissions = rjson.filter(s => s.form_name === 'nftshirtGarito' && s.data.wallet === accounts[0])
+        const submissions = rjson.filter(s => s.form_name === 'nftshirt' && s.data.wallet === accounts[0])
         const web3 = new Web3('https://rinkeby.infura.io/v3/fd54bdcad15640efbcb501979a6075f6');
         const abi = [
           {
@@ -148,7 +148,7 @@
             "type": "function"
           }
         ]
-        const contract = new web3.eth.Contract(abi, '0x479514d07125dde04d60a0a5ee611e65791de416');
+        const contract = new web3.eth.Contract(abi, '0xbee1e6bd030b800ccb46e3eef5799d7a44e65c6e');
         const logs = await contract.getPastEvents('allEvents', { fromBlock: 0, toBlock: 'latest'});
         const lowerAccount = accounts[0].toLowerCase()
         const minted = logs.filter(l => l.event == 'Minted' && l.returnValues.to.toLowerCase() === lowerAccount)
@@ -222,7 +222,7 @@
 
     <div id="container" class="container flex justify-center">
 
-      <form name="nftshirtGarito" method="POST" action="/shirt-claimed.html" data-netlify="true" class="w-full max-w-sm" onsubmit="return check(event)">
+      <form name="nftshirt" method="POST" action="/shirt-claimed.html" data-netlify="true" class="w-full max-w-sm" onsubmit="return check(event)">
 
         <div id="t-shirts" class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
