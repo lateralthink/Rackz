@@ -1,0 +1,296 @@
+<!doctype html>
+<html data-theme="wireframe">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.0/web3.min.js" integrity="sha512-RGPKVfQewHGfk9yaB7ThGPKAQU+civS5awsfStLg22jrWbqgDkNzPtIwNFpFApr3ccjB730SRxi+KnDjhIuTpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel='stylesheet' href='/assets/css/styles.css'>
+
+  <script>
+    const check = e => {
+      const hidden = document.querySelectorAll('[type=hidden][id]:not([id=""])');
+      var noWallet = false;
+      var noCard = false;
+      for (const field of hidden) {
+        const id = field.getAttribute('id');
+        if (!field.value) {
+          if (id === 'wallet') {
+            noWallet = true;
+          } else if (['tokenId', 'tmpl'].includes(id)) {
+            noCard = true;
+          }
+        }
+      }
+
+      if (noCard) {
+        const tshirts = document.getElementById('t-shirts');
+        tshirts.classList.add('border', 'border-red-500');
+      }
+
+      if (noWallet) {
+        const alert = document.createElement('div');
+        const content = document.createElement('div');
+        const msg = document.createElement('span');
+        msg.innerHTML = "We can't read your wallet address";
+        content.appendChild(msg);
+        alert.classList.add('alert', 'alert-error',  'shadow-lg');
+        alert.appendChild(content);
+
+        const container = document.getElementById('container');
+        const form = document.querySelector('form');
+        container.insertBefore(alert, form);
+      }
+
+      if (noWallet || noCard) {
+        e.preventDefault();
+        return false;
+      }
+
+      return true;
+    }
+
+    window.addEventListener('load', async (event) => {
+      const accounts = await ethereum.request({ method: 'eth_accounts' });
+      const field = document.getElementById('wallet');
+      field.value = accounts[0];
+
+      const base_url = "https://api.netlify.com/api/v1/";
+      const site_id = "60e53e35-7527-44d5-a3a0-eb590a20d2a3";
+      const opts = {
+        headers: {
+          'User-Agent': 'rackzgallery',
+          Authorization: 'Bearer 03LvbzlBqVmPy8udlj8i1hvj_tkUxPIPFdgis1KSjDs'
+        }
+      }
+      const resp = await fetch(`${base_url}sites/${site_id}/submissions`, opts);
+      if (resp.ok) {
+        const rjson = await resp.json();
+        const submissions = rjson.filter(s => s.form_name === 'nftshirtGarito' && s.data.wallet === accounts[0])
+        const web3 = new Web3('https://rinkeby.infura.io/v3/fd54bdcad15640efbcb501979a6075f6');
+        const abi = [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": false,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "tmpl",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "itemId",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "cardId",
+                "type": "uint256"
+              }
+            ],
+            "name": "Minted",
+            "type": "event"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+              },
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              }
+            ],
+            "name": "Transfer",
+            "type": "event"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              }
+            ],
+            "name": "tokenURI",
+            "outputs": [
+              {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ]
+        const contract = new web3.eth.Contract(abi, '0x479514d07125dde04d60a0a5ee611e65791de416');
+        const logs = await contract.getPastEvents('allEvents', { fromBlock: 0, toBlock: 'latest'});
+        const lowerAccount = accounts[0].toLowerCase()
+        const minted = logs.filter(l => l.event == 'Minted' && l.returnValues.to.toLowerCase() === lowerAccount)
+        const transfered = logs.filter(l => l.event == 'Transfer' && (l.returnValues.to?.toLowerCase() === lowerAccount || l.returnValues.from?.toLowerCase() === lowerAccount))
+        const owned = {}
+        for (const transfer of transfered) {
+          if (transfer.returnValues.from === '0x0000000000000000000000000000000000000000') {
+            transfer.minted = minted.find(m => m.returnValues.itemId === transfer.returnValues.tokenId).returnValues;
+          }
+          if (transfer.returnValues.to.toLowerCase() === lowerAccount) {
+            owned[transfer.returnValues.tokenId] = transfer;
+          } else if (Object.keys(owned).includes(transfer.returnValues.tokenId)) {
+            delete owned[transfer.returnValues.tokenId]
+          }
+        }
+
+        const ipfsURL = 'https://ipfs.lateralthink.club/ipfs/';
+        const tshirtsList = document.getElementById('t-shirts-list')
+        tmpls = {}
+        for (const tshirt of Object.values(owned)) {
+          if (!Object.keys(tmpls).includes(tshirt.minted.tmpl)) {
+            const uri = await contract.methods.tokenURI(tshirt.minted.itemId).call();
+            const resp = await fetch(uri.replace('ipfs://', ipfsURL));
+            tmpls[tshirt.minted.tmpl] = await resp.json();
+          }
+          const div = document.createElement('div');
+          div.setAttribute('id', `t-shirt-${ tshirt.minted.itemId }`);
+          div.classList.add('w-3/12', 't-shirt');
+          const submission = submissions.find(s => s.data.tokenId === tshirt.minted.itemId)
+          if(submission) {
+            div.classList.add('used');
+          }
+          const img = document.createElement('img');
+          img.src = tmpls[tshirt.minted.tmpl].image.replace('ipfs://', ipfsURL);
+          img.setAttribute('tokenId', tshirt.minted.itemId)
+          img.setAttribute('tmpl', tshirt.minted.tmpl)
+          div.appendChild(img);
+          tshirtsList.appendChild(div);
+        }
+
+        const tokenField = document.getElementById('tokenId');
+        const tmplField = document.getElementById('tmpl');
+        if (Object.keys(owned).length === 1) {
+          tokenField.value = Object.values(owned)[0].minted.itemId;
+          tmplField.value = Object.values(owned)[0].minted.tmpl;
+          const tshirts = document.getElementsByClassName('t-shirt');
+          tshirts[0].classList.add('selected')
+          const label = document.querySelector('#t-shirts label');
+          label.innerHTML = 'Your t-shirt:';
+        } else if (Object.keys(owned).length > 1) {
+          for (const tshirt of document.querySelectorAll('.t-shirt:not(.used)')) {
+            tshirt.addEventListener('click', e => {
+              const selected = document.querySelector('.t-shirt.selected');
+              if (selected) {
+                selected.classList.remove('selected');
+              }
+              tokenField.value = e.target.getAttribute('tokenId')
+              tmplField.value = e.target.getAttribute('tmpl');
+              e.target.parentNode.classList.add('selected')
+            })
+          };
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+  <section class="py-4">
+
+    <div id="container" class="container flex justify-center">
+
+      <form name="nftshirtGarito" method="POST" action="/shirt-claimed.html" data-netlify="true" class="w-full max-w-sm" onsubmit="return check(event)">
+
+        <div id="t-shirts" class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="size">
+              Select the t-shirt:
+            </label>
+          </div>
+          <div id="t-shirts-list" class="flex gap-4 md:w-2/3">
+          </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="size">
+              Your size:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="size" name="size" required>
+              <option value="sm">Small</option>
+              <option value="md">Medium</option>
+              <option value="lg">Large</option>
+              <option value="xl">Extra large</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="email">
+              Your email:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="email" name="email" type="email" required>
+          </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="address">
+              Shipping Address:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-900" id="address" name="address" required></textarea>
+          </div>
+        </div>
+
+        <input id="wallet" type="hidden" name="wallet" />
+        <input id="tokenId" type="hidden" name="tokenId" />
+        <input id="tmpl" type="hidden" name="tmpl" />
+        <input name="bot-field" type="hidden" />
+
+        <div class="md:flex md:items-center">
+          <div class="md:w-1/3"></div>
+          <div class="md:w-2/3">
+            <button class="shadow hover:bg-gray-700 hover:text-white focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded" type="submit">
+              Send
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>
