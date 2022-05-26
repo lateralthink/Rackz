@@ -13,7 +13,7 @@
   }
 
   h2 {
-    @apply text-3xl text-black uppercase flex justify-center items-start text-center mb-4 !important;
+    @apply text-2xl md:text-3xl text-black uppercase flex justify-center items-start text-center mb-4 !important;
   }
 
   h2:before {
@@ -149,34 +149,36 @@
   }
 }
 
-.flip {
-  perspective: 600px;
-}
+@media (min-width: 768px) {
+  .flip {
+    perspective: 600px;
+  }
 
-.flip-content {
-  transition: transform 0.4s;
-  transform-style: preserve-3d;
-}
+  .flip-content {
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+  }
 
-.flip:hover .flip-content {
-  transform: rotateY(180deg);
-  transition: transform 0.3s;
-}
+  .flip:hover .flip-content {
+    transform: rotateY(180deg);
+    transition: transform 0.3s;
+  }
 
-.flip-front {
-  object-fit: cover;
-}
+  .flip-front {
+    object-fit: cover;
+  }
 
-.flip-front,
-.flip-back {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  backface-visibility: hidden;
-}
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+  }
 
-.flip-back {
-  transform: rotateY(180deg);
+  .flip-back {
+    transform: rotateY(180deg);
+  }
 }
 
 .gallery-wrap {
