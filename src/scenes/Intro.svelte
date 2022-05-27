@@ -90,12 +90,12 @@
   <div class="menu-wrap bg-black py-6 px-10 z-50 flex flex-col items-center">
     <ul class="flex flex-col md:flex-row grow justify-center items-center">
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#gallery"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#gallery"
           >Virtual gallery</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#about"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#about"
           >About</a
         >
       </li>
@@ -105,22 +105,22 @@
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#media"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#media"
           >Media</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#shop"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#shop"
           >Shop</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#club"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#club"
           >Private club</a
         >
       </li>
       <li>
-        <a class="text-xl text-white uppercase m-8" href="/inner.html#contact"
+        <a class="text-base md:text-xl text-white uppercase m-8" href="/inner.html#contact"
           >Contact</a
         >
       </li>
